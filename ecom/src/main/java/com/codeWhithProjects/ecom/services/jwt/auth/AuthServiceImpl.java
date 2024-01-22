@@ -20,7 +20,8 @@ public class AuthServiceImpl implements AuthService{
         User user = new User();
         user.setEmail(signupRequest.getEmail());
         user.setName(signupRequest.getName());
-        user.setPassword(new BCryptPasswordEncoder().encode(signupRequest.getPassword()));
+        //user.setPassword(new BCryptPasswordEncoder().encode(signupRequest.getPassword()));
+        user.setPassword(bCryptPasswordEncoder.encode(signupRequest.getPassword()));
         user.setRole(UserRole.COSTUMER);
         User createdUser= userRepository.save(user);
 
@@ -28,6 +29,8 @@ public class AuthServiceImpl implements AuthService{
         userDto.setId(createdUser.getId());
         return userDto;
     }
+
+
     public Boolean hasUserWithEmail(String email){
         return userRepository.findFirstByEmail(email).isPresent();
     }

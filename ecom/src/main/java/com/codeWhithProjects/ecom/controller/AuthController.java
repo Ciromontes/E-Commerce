@@ -11,6 +11,7 @@ import com.codeWhithProjects.ecom.utils.JwtUtil;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.With;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
@@ -69,6 +70,12 @@ public class AuthController {
                     .put("role", optionalUser.get().getRole())
                     .toString()
             );
+            response.addHeader("Access-Control-Expose-Headers", "Authorization");
+            response.addHeader("Access-Control-Allow-Headers", "Authorization, X-PINGOTHER, Origin, " +
+                    "X-Requested-With, Content-Type, Accept, X-Custom-header");
+
+
+
             response.addHeader(HEADER_STRING, TOKEN_PREFIX + " " + jwt);
         }
     }
