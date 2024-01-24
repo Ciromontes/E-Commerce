@@ -1,11 +1,9 @@
 package com.codeWhithProjects.ecom.repository;
 
-import com.codeWhithProjects.ecom.entity.Category;
+import com.codeWhithProjects.ecom.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-
-    @Repository
-    public interface CategoryRepository extends JpaRepository<Category, Long> {
-
-    }
+@Repository
+public interface ProductRepository extends JpaRepository<Product, Long> {
+}
